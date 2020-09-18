@@ -1,12 +1,7 @@
-from qiskit import BasicAer, IBMQ, execute, QuantumCircuit, QuantumRegister
+from qiskit import BasicAer, execute, QuantumCircuit
 from qiskit.circuit import Parameter
 from qiskit.visualization import plot_histogram
-from qiskit.extensions import UnitaryGate
 from qiskit.quantum_info import Operator, Pauli
-
-from qiskit.tools.monitor import job_monitor
-from qiskit.providers.ibmq import least_busy
-from qiskit_textbook.tools import simon_oracle
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -50,6 +45,8 @@ H = 1/2*(ZZ+II) -1/2*(XX+YY)
 Can also be found by taking the trace with each of the Pauli operators in the required dimension as done in https://www.osti.gov/servlets/purl/1619265
 
 The rot_x and rot_y operators are matrices that perform rotations in the 2-qubit Hilbert space, so that we can easily measure in the Z basis.
+
+XX and YY commute! Need only 1 circuit for both.
 
 Try running the code with different starting points. Maybe choose them randomly.
 
@@ -100,12 +97,12 @@ rot_y = Operator(rot_y/np.sqrt(2))
 
 def create_ansatz():
     ansatz = QuantumCircuit(2)
-    ansatz.h(0)
-    ansatz.cx(0, 1)
-    ansatz.rx(theta, 0)
-    # ansatz.ry(theta, 0)
+    # ansatz.h(0)
     # ansatz.cx(0, 1)
-    # ansatz.x(0)
+    # ansatz.rx(theta, 0)
+    ansatz.ry(theta, 0)
+    ansatz.cx(0, 1)
+    ansatz.x(0)
     ansatz = ansatz.to_gate()
     ansatz.label = "ANSATZ(theta)"
     return ansatz

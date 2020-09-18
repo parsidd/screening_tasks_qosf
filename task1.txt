@@ -1,0 +1,10 @@
+Number of layers =  1 Minimal cost =  0.8084906646462425 Number of iterations =  230
+Number of layers =  2 Minimal cost =  0.43540117029188785 Number of iterations =  500
+Number of layers =  3 Minimal cost =  0.30301721583058716 Number of iterations =  500
+Number of layers =  4 Minimal cost =  0.23478646792837587 Number of iterations =  500
+Number of layers =  5 Minimal cost =  0.25176391670459186 Number of iterations =  500
+Number of layers =  6 Minimal cost =  0.13478502977410903 Number of iterations =  500
+Number of layers =  7 Minimal cost =  0.22162216477326208 Number of iterations =  500
+Number of layers =  8 Minimal cost =  0.26069657024392556 Number of iterations =  500
+Number of layers =  9 Minimal cost =  0.3362178652469031 Number of iterations =  500
+Number of layers =  10 Minimal cost =  0.37266949705317687 Number of iterations =  500
