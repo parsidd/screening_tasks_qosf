@@ -1,0 +1,120 @@
+
+Number of layers =  1 
+Minimal cost =  0.5846930797850249 
+Number of iterations =  145
+
+Number of layers =  2 
+Minimal cost =  0.2484271466588996 
+Number of iterations =  500
+
+Number of layers =  3 
+Minimal cost =  0.15826287394570324 
+Number of iterations =  500
+
+Number of layers =  4 
+Minimal cost =  0.05489090860587217 
+Number of iterations =  500
+
+Number of layers =  5 
+Minimal cost =  0.054939466352494984 
+Number of iterations =  500
+
+Number of layers =  6 
+Minimal cost =  0.06791206101733271 
+Number of iterations =  500
+
+Number of layers =  7 
+Minimal cost =  0.055427005948029684 
+Number of iterations =  500
+
+Number of layers =  8 
+Minimal cost =  0.03891482727138795 
+Number of iterations =  500
+
+Number of layers =  9 
+Minimal cost =  0.08287191810656616 
+Number of iterations =  500
+
+Number of layers =  10 
+Minimal cost =  0.11211901184564743 
+Number of iterations =  500
+
+Number of layers =  11 
+Minimal cost =  0.09651221456362644 
+Number of iterations =  500
+
+Number of layers =  12 
+Minimal cost =  0.08085166818648606 
+Number of iterations =  500
+
+Number of layers =  13 
+Minimal cost =  0.15244669501992666 
+Number of iterations =  500
+
+Number of layers =  14 
+Minimal cost =  0.07634965888030754 
+Number of iterations =  500
+
+Number of layers =  15 
+Minimal cost =  0.1649332633090335 
+Number of iterations =  500
+
+Number of layers =  16 
+Minimal cost =  0.10463960089559747 
+Number of iterations =  500
+
+Number of layers =  17 
+Minimal cost =  0.1702966185497128 
+Number of iterations =  500
+
+Number of layers =  18 
+Minimal cost =  0.06721138473733623 
+Number of iterations =  500
+
+Number of layers =  19 
+Minimal cost =  0.138726117397373 
+Number of iterations =  500
+
+Number of layers =  20 
+Minimal cost =  0.2238557080915178 
+Number of iterations =  500
+
+Number of layers =  21 
+Minimal cost =  0.12616175692572185 
+Number of iterations =  500
+
+Number of layers =  22 
+Minimal cost =  0.11446462631556686 
+Number of iterations =  500
+
+Number of layers =  23 
+Minimal cost =  0.1605246266969307 
+Number of iterations =  500
+
+Number of layers =  24 
+Minimal cost =  0.22967760958096337 
+Number of iterations =  500
+
+Number of layers =  25 
+Minimal cost =  0.14437685975641984 
+Number of iterations =  500
+
+Number of layers =  26 
+Minimal cost =  0.1584815738735204 
+Number of iterations =  500
+
+Number of layers =  27 
+Minimal cost =  0.14302682370472247 
+Number of iterations =  500
+
+Number of layers =  28 
+Minimal cost =  0.15742561584511655 
+Number of iterations =  500
+
+Number of layers =  29 
+Minimal cost =  0.23051142513559125 
+Number of iterations =  500
+
+Number of layers =  30 
+Minimal cost =  0.18020393880168428 
+Number of iterations =  500
