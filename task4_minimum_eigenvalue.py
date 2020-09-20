@@ -7,8 +7,6 @@ import matplotlib.pyplot as plt
 from scipy.optimize import minimize
 
 backend = BasicAer.get_backend("qasm_simulator")
-shots = 4096
-theta = Parameter('theta')
 
 qubit_2_eigenvalues = {"Z":{"00":1,"01":-1,"10":-1,"11":1},
                        "X":{"00":1,"01":-1,"10":1,"11":-1},
@@ -16,20 +14,21 @@ qubit_2_eigenvalues = {"Z":{"00":1,"01":-1,"10":-1,"11":1},
 
 
 class VQE_2_qubit:
-    def __init__(self, theta, shots = 1024):
+    def __init__(self, theta = Parameter("theta"), shots = 2048):
         self.energy_values = []
         self.angle_values = []
         self.qc = []
+        self.theta = theta
         self.shots = shots
 
     # This is an ansatz I used first to run the program.
     def add_ansatz1(self):
         ansatz = QuantumCircuit(2)
-        ansatz.ry(theta, 0)
+        ansatz.ry(self.theta, 0)
         ansatz.cx(0, 1)
         ansatz.x(0)
         ansatz = ansatz.to_gate()
-        ansatz.label = "ANSATZ(theta)"
+        ansatz.label = "ANSATZ1(theta)"
         return ansatz
 
     # Ansatz given in hint
@@ -37,9 +36,9 @@ class VQE_2_qubit:
         ansatz = QuantumCircuit(2)
         ansatz.h(0)
         ansatz.cx(0, 1)
-        ansatz.rx(theta, 0)
+        ansatz.rx(self.theta, 0)
         ansatz = ansatz.to_gate()
-        ansatz.label = "ANSATZ(theta)"
+        ansatz.label = "ANSATZ2(theta)"
         return ansatz
 
     # Need to add this part as well. Want to see if it converges faster. Probably wont.
@@ -55,8 +54,8 @@ class VQE_2_qubit:
     # Measure the energy expectation value of the given operator given a variational parameter
     def measure_H_expectation(self, angle):
         energy = 0
-        results_z = execute(self.qc[0].bind_parameters({theta: angle[0]}), backend = backend, shots = shots).result().get_counts()
-        results_xy = execute(self.qc[1].bind_parameters({theta: angle[0]}), backend = backend, shots = shots).result().get_counts()
+        results_z = execute(self.qc[0].bind_parameters({self.theta: angle[0]}), backend = backend, shots = self.shots).result().get_counts()
+        results_xy = execute(self.qc[1].bind_parameters({self.theta: angle[0]}), backend = backend, shots = self.shots).result().get_counts()
         # Find expectation of each Pauli operator
         z_exp = self.measure_expectation("Z", results_z)
         x_exp = self.measure_expectation("X", results_xy)
@@ -72,7 +71,7 @@ class VQE_2_qubit:
     def measure_expectation(self, basis, p_dict):
         expectation = 0
         for state,counts in p_dict.items():
-            expectation += qubit_2_eigenvalues[basis][state]*counts/shots
+            expectation += qubit_2_eigenvalues[basis][state]*counts/self.shots
         return expectation
 
     def create_circuits(self):
@@ -93,7 +92,7 @@ class VQE_2_qubit:
             # Draw the circuit with each gate explicitly
             print(i.decompose().draw())
 
-task4 = VQE_2_qubit(theta)
+task4 = VQE_2_qubit()
 task4.create_circuits()
 # Could just search through all the possible values of the variational parameter instead of using the optimiser
 # for angle in np.linspace(0,2*np.pi,100):
