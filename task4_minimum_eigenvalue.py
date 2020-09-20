@@ -13,12 +13,13 @@ qubit_2_eigenvalues = {"Z":{"00":1,"01":-1,"10":-1,"11":1},
                        "Y":{"00":-1,"01":1,"10":1,"11":-1}}
 
 
-class VQE_2_qubit:
-    def __init__(self, theta = Parameter("theta"), shots = 2048):
+class Task4:
+    def __init__(self, theta = Parameter("theta"), shots = ):
         self.energy_values = []
         self.angle_values = []
         self.qc = []
         self.theta = theta
+        self.phi = None
         self.shots = shots
 
     # This is an ansatz I used first to run the program.
@@ -42,11 +43,11 @@ class VQE_2_qubit:
         return ansatz
 
     # Need to add this part as well. Want to see if it converges faster. Probably wont.
-    # def add_ansatz3():
+    # def add_ansatz3(self):
     #     ansatz = QuantumCircuit(2)
-    #     ansatz.0)
+    #     ansatz.ry(self.phi, 0)
     #     ansatz.cx(0, 1)
-    #     ansatz.rx(theta, 0)
+    #     ansatz.rx(self.theta, 0)
     #     ansatz = ansatz.to_gate()
     #     ansatz.label = "ANSATZ(theta)"
     #     return ansatz
@@ -74,12 +75,17 @@ class VQE_2_qubit:
             expectation += qubit_2_eigenvalues[basis][state]*counts/self.shots
         return expectation
 
-    def create_circuits(self):
+    def create_circuits(self, ansatz):
         # Create the required circuits
         for i in range(2):
             self.qc.append(QuantumCircuit(2))
-            # Use the 1st ansatz. Can also use the 2nd one instead with add_ansatz2()
-            self.qc[i].append(self.add_ansatz1(), [0,1])
+            if(ansatz == 1):
+                self.qc[i].append(self.add_ansatz1(), [0,1])
+            elif(ansatz == 2):
+                self.qc[i].append(self.add_ansatz2(), [0,1])
+            # elif(ansatz == 3):
+            #     self.phi = Parameter("phi")
+            #     self.qc[i].append(self.add_ansatz3(phi), [0,1])
             # self.qc[i] = self.qc[i].bind_parameters({theta: 0})
 
         # Want to measure in the Z basis. Hence need to rotate so that the eigenvectors of the XX operator rotate to the eigenvectors of the ZZ operator. Refer to report for more details.
@@ -92,8 +98,8 @@ class VQE_2_qubit:
             # Draw the circuit with each gate explicitly
             print(i.decompose().draw())
 
-task4 = VQE_2_qubit()
-task4.create_circuits()
+task4 = Task4()
+task4.create_circuits(1)
 # Could just search through all the possible values of the variational parameter instead of using the optimiser
 # for angle in np.linspace(0,2*np.pi,100):
 #     measure_H_expectation([angle])
