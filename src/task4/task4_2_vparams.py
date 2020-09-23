@@ -40,6 +40,8 @@ class Task4:
         ansatz.ry(self.theta, 0)
         ansatz.cx(0, 1)
         ansatz.rx(self.phi, 0)
+        ansatz.draw("mpl")
+        plt.show()
         ansatz = ansatz.to_gate()
         ansatz.label = "ANSATZ1(theta)"
         return ansatz
