@@ -38,6 +38,8 @@ class Task4:
         ansatz.ry(self.theta, 0)
         ansatz.cx(0, 1)
         ansatz.x(0)
+        # ansatz.draw("mpl")
+        # plt.show()
         ansatz = ansatz.to_gate()
         ansatz.label = "ANSATZ1(theta)"
         return ansatz
@@ -76,6 +78,8 @@ class Task4:
             i.measure_all()
             # Draw the circuit with each gate explicitly
             print(i.decompose().draw())
+            # i.decompose().draw("mpl")
+            # plt.show()
 
     # Measure the energy expectation value of the given operator given a 
     # variational parameter
@@ -89,7 +93,10 @@ class Task4:
         z_exp = self.measure_expectation("Z", results_z)
         x_exp = self.measure_expectation("X", results_xy)
         y_exp = self.measure_expectation("Y", results_xy)
+
         # Energy in terms of expectation value in each basis
+        # Need to multiply by the right coefficient according to the 
+        # decomposition. Identity contributes 1 all the time.
         energy = (z_exp + 1 - x_exp - y_exp)/2
         self.angle_values.append(angle[0])
         self.energy_values.append(energy)
@@ -157,7 +164,9 @@ if __name__ == "__main__":
                     exit(0)
             else:
                 print("Usage:")
-                print("python task4_minimum_eigenvalue.py [-lin_search] [-tol <tolerance value>] ")
+                print("python task4_minimum_eigenvalue.py [-lin_search] [-tol \
+                    <tolerance value>] [-N <value for number of points in \
+                        lin_search] [-ansatz <1 or 2>]")
             i = i+1
 
     # Create the circuits
