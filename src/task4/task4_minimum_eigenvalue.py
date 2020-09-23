@@ -38,8 +38,8 @@ class Task4:
         ansatz.ry(self.theta, 0)
         ansatz.cx(0, 1)
         ansatz.x(0)
-        # ansatz.draw("mpl")
-        # plt.show()
+        ansatz.draw("mpl")
+        plt.show()
         ansatz = ansatz.to_gate()
         ansatz.label = "ANSATZ1(theta)"
         return ansatz
@@ -50,6 +50,8 @@ class Task4:
         ansatz.h(0)
         ansatz.cx(0, 1)
         ansatz.rx(self.theta, 0)
+        ansatz.draw("mpl")
+        plt.show()
         ansatz = ansatz.to_gate()
         ansatz.label = "ANSATZ2(theta)"
         return ansatz
@@ -77,9 +79,9 @@ class Task4:
         for i in self.qc:
             i.measure_all()
             # Draw the circuit with each gate explicitly
-            print(i.decompose().draw())
-            # i.decompose().draw("mpl")
-            # plt.show()
+            # print(i.decompose().draw())
+            i.decompose().draw("mpl")
+            plt.show()
 
     # Measure the energy expectation value of the given operator given a 
     # variational parameter
