@@ -48,7 +48,15 @@ def cost(p_dict):
         p_10 = p_dict["10"]/shots
     except:
         p_10 = 0 
-    c = (p_01-0.5)**2 + (p_10-0.5)**2
+    try:
+        p_11 = p_dict["11"]/shots
+    except:
+        p_11 = 0
+    try:
+        p_00 = p_dict["00"]/shots
+    except:
+        p_00 = 0
+    c = (p_01-0.5)**2 + (p_10-0.5)**2 + p_00**2 + p_11**2
     return c
 
 def run_circuit(angles):
