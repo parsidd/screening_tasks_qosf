@@ -38,7 +38,7 @@ class Task4:
         ansatz.ry(self.theta, 0)
         ansatz.cx(0, 1)
         ansatz.x(0)
-        ansatz.draw("mpl")
+        # ansatz.draw("mpl")
         plt.show()
         ansatz = ansatz.to_gate()
         ansatz.label = "ANSATZ1(theta)"
@@ -50,7 +50,7 @@ class Task4:
         ansatz.h(0)
         ansatz.cx(0, 1)
         ansatz.rx(self.theta, 0)
-        ansatz.draw("mpl")
+        # ansatz.draw("mpl")
         plt.show()
         ansatz = ansatz.to_gate()
         ansatz.label = "ANSATZ2(theta)"
@@ -80,8 +80,8 @@ class Task4:
             i.measure_all()
             # Draw the circuit with each gate explicitly
             # print(i.decompose().draw())
-            i.decompose().draw("mpl")
-            plt.show()
+            # i.decompose().draw("mpl")
+            # plt.show()
 
     # Measure the energy expectation value of the given operator given a 
     # variational parameter
@@ -142,7 +142,7 @@ if __name__ == "__main__":
     qc = QuantumCircuit(2)
     qc.cx(0,1)
     qc.h(0)
-    qc.draw("mpl")
+    # qc.draw("mpl")
     # Take command line arguments
     if(len(sys.argv) > 1):  
         i = 1
@@ -168,11 +168,18 @@ if __name__ == "__main__":
                 except:
                     print("Invalid value following ansatz option")
                     exit(0)
+            elif(opt == "-h"):
+                print("Usage:")
+                print("python task4_minimum_eigenvalue.py [-lin_search] [-tol \
+                    <tolerance value>] [-N <value for number of points in \
+                        lin_search] [-ansatz <1 or 2>]")
+                exit(0)
             else:
                 print("Usage:")
                 print("python task4_minimum_eigenvalue.py [-lin_search] [-tol \
                     <tolerance value>] [-N <value for number of points in \
                         lin_search] [-ansatz <1 or 2>]")
+                exit(0)
             i = i+1
 
     # Create the circuits
