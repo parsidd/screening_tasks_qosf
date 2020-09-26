@@ -74,7 +74,6 @@ class Task4:
         # operator. Refer to report for more details.
         self.qc[1].cx(0,1)
         self.qc[1].h(0)
-
         # Add the measurements
         for i in self.qc:
             i.measure_all()
@@ -139,10 +138,7 @@ if __name__ == "__main__":
     lin_search = 0
     N = 100
     tol = 1e-3
-    qc = QuantumCircuit(2)
-    qc.cx(0,1)
-    qc.h(0)
-    # qc.draw("mpl")
+
     # Take command line arguments
     if(len(sys.argv) > 1):  
         i = 1
