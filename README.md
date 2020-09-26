@@ -1,4 +1,4 @@
-# screening_tasks_qosf
+# Screening Tasks QOSF
 Repository for screening task(s) for the QOSF Mentorship program.
 Members:
 1. Parth S. Shah
